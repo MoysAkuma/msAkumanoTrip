@@ -59,6 +59,6 @@ public class Trip {
 		this.InitialDate = t.getInitialDate();
 		this.FinalDate = t.getFinalDate();
 		this.UbicationID = t.getUbicationID();
-		this.International = t.getInternational();
+		this.International = t.getIsInternational();
 	}
 }

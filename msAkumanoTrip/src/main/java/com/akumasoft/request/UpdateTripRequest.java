@@ -28,5 +28,5 @@ public class UpdateTripRequest {
 	private Long UbicationID;
 	
 	@NotBlank(message = "Trip International flag is required")
-	private Boolean International;
+	private Boolean IsInternational;
 }

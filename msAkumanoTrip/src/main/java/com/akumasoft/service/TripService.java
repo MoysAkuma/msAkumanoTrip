@@ -12,6 +12,7 @@ import com.akumasoft.request.*;
 public class TripService {
 	@Autowired
 	TripRepository TripRp;
+	
 	public Trip createTrip (CreateTripRequest crtrq) {
 		return TripRp.save( 
 			new Trip(crtrq) 
@@ -33,5 +34,9 @@ public class TripService {
 	public Boolean deleteTrip(Long TripID) {
 		TripRp.deleteById(TripID);
 		return true;
+	}
+	
+	public List<Trip> SearchByFilters(SearchByFiltersRequest sfr){
+		return TripRp.searchByTripIDInOrNameInOrDescriptionIn(sfr);
 	}
 }

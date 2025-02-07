@@ -14,4 +14,5 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 	Trip readTrip(Long tripid);
 	Boolean updateTrip(UpdateTripRequest triurq);
 	Boolean deleteTrip(Long tripid);
+	List<Trip> searchByTripIDInOrNameInOrDescriptionIn(SearchByFiltersRequest sfr);
 }
