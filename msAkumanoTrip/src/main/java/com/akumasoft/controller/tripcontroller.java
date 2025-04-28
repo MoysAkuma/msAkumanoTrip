@@ -24,7 +24,7 @@ import com.akumasoft.service.TripService;
 import com.akumasoft.handler.ResponseHandler;
 
 @RestController
-@RequestMapping("/trip/")
+@RequestMapping("/trips")
 public class tripcontroller {
 	@Autowired
 	TripService srvTrip;
@@ -54,6 +54,11 @@ public class tripcontroller {
 		return ResponseHandler.generateResponsedata("Process of Creation success", HttpStatus.OK, t);
 	}
 	
+	@GetMapping("/hello")
+	public String hello() {
+		return "on";
+	}
+	
 	@DeleteMapping("/Delete/{TripID}")
 	public ResponseEntity<Object> delete(@PathVariable Long TripID ) {
 		if( this.srvTrip.deleteTrip(TripID)) {
@@ -72,28 +77,4 @@ public class tripcontroller {
 			return ResponseHandler.generateResponsedata("Process of Creation success", HttpStatus.OK, srch);
 		}
 	}
-	/*
-	 * @GetMapping("/new")
-	public List<TripResponse> getNewPublicTrips(){
-		List<Trip> tripList = srvTrip.getNewPublicTrips();
-		List<TripResponse> tripRL = new ArrayList<TripResponse>();
-		
-		tripList.stream().forEach(v -> {
-			tripRL.add(new TripResponse(v));
-		});
-		
-		return tripRL;
-	}
-	
-	@GetMapping("like/{TripName}")
-	public List<TripSearchResponse> getLikeTripName(@RequestParam String TripName) {
-		List<Trip> tripList = srvTrip.findByName(TripName);
-		List<TripSearchResponse> tripRL = new ArrayList<TripSearchResponse>();
-		tripList.stream().forEach(v -> {
-			tripRL.add(new TripSearchResponse(v));
-		});
-		
-		return tripRL;
-	}
-	*/
 }
